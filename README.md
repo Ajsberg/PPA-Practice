@@ -1,0 +1,1 @@
+Repo containing my school exam excercises
