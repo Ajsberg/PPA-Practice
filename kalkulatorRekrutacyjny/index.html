@@ -4,11 +4,74 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kalkulator Meritum</title>
+    <script src="kalkulator.js"></script>
 </head>
 <body>
     <div class="title">KALKULATOR REKRUTACJI MERITUM</div>
     <div class="calculator">
-        
+        <form>
+            <label for="egzamin-polski">Egzamin - J. Polski (%)(Laureaci wpisują 100):</label>
+            <input type="number" id="egzamin-polski" name="egzamin-polski" step="1"><br>
+    
+            <label for="egzamin-matematyka">Egzamin - Matematyka (%)(Laureaci wpisują 100):</label>
+            <input type="number" id="egzamin-matematyka" name="egzamin-matematyka" step="1"><br>
+    
+            <label for="egzamin-jezyk-obcy">Egzamin - J. Obcy nowożytny (%)(Laureaci wpisują 100):</label>
+            <input type="number" id="egzamin-jezyk-obcy" name="egzamin-jezyk-obcy" step="1"><br>
+    
+            <label for="swiadectwo-polski">Świadectwo - J. Polski (ocena):</label>
+            <select id="swiadectwo-polski" name="swiadectwo-polski">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+            </select><br>
+    
+            <label for="swiadectwo-matematyka">Świadectwo - Matematyka (ocena):</label>
+            <select id="swiadectwo-matematyka" name="swiadectwo-matematyka">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+            </select><br>
+    
+            <label for="swiadectwo-jezyk-obcy">Świadectwo - J. obcy (najwyższa ocena z j. obowiązkowego):</label>
+            <select id="swiadectwo-jezyk-obcy" name="swiadectwo-jezyk-obcy">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+            </select><br>
+    
+            <label for="przedmiot-najwyzsza-ocena">Wybierz przedmiot z najwyższą oceną:</label>
+            <select id="przedmiot-najwyzsza-ocena" name="przedmiot-najwyzsza-ocena">
+                <option value="biologia-ocena">Biologia</option>
+                <option value="chemia-ocena">Chemia</option>
+                <option value="fizyka-ocena">Fizyka</option>
+                <option value="geografia-ocena">Geografia</option>
+                <option value="informatyka-ocena">Informatyka</option>
+                <option value="historia-ocena">Historia (tylko dla rekrutujących do liceum)</option>
+                <option value="wos-ocena">WoS (tylko dla rekrutujących do liceum)</option>
+            </select><br>
+    
+            <label for="ocena-przedmiot-dod">Ocena z wybranego wyżej przedmiotu:</label>
+            <select id="ocena-przedmiot-dod" name="ocena-przedmiot">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+            </select><br>
+    
+            <input type="submit" value="Oblicz">
+        </form>
     </div>
 </body>
 </html>
