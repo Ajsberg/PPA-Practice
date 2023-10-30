@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <title>Kalkulator Meritum</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const form = document.querySelector('form');
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                
+                // Pobranie wartości z formularza
+                const polski = parseInt(document.getElementById('egzamin-polski').value) * 0.35;
+                const matematyka = parseInt(document.getElementById('egzamin-matematyka').value) * 0.35;
+                const jezykObcy = parseInt(document.getElementById('egzamin-jezyk-obcy').value) * 0.3;
+                const swiadectwoPolski = parseInt(document.getElementById('swiadectwo-polski').value);
+                const swiadectwoMatematyka = parseInt(document.getElementById('swiadectwo-matematyka').value);
+                const swiadectwoJezykObcy = parseInt(document.getElementById('swiadectwo-jezyk-obcy').value);
+                const przedmiotDodatkowy = parseInt(document.getElementById('ocena-przedmiot-dod').value);
+                const osiagniecie = parseInt(document.getElementById('konkursy').value);
+                const wyroznienie = document.getElementById('wyroznienie').checked;
+                const wolontariat = document.getElementById('wolontariat').checked;
+
+                // Funkcja do obliczenia punktów za oceny
+                function obliczPunkty(ocena) {
+                    switch (ocena) {
+                        case 6: return 18;
+                        case 5: return 17;
+                        case 4: return 14;
+                        case 3: return 8;
+                        case 2: return 2;
+                        default: return 0;
+                    }
+                }
+                
+                // Obliczenie punktów i wypisanie wyniku
+                const punktySwiadectwo = obliczPunkty(swiadectwoPolski) + obliczPunkty(swiadectwoMatematyka) + obliczPunkty(swiadectwoJezykObcy) + obliczPunkty(przedmiotDodatkowy);
+                const punktyEgzaminy = polski + matematyka + jezykObcy;
+                const punktyWyroznienie = wyroznienie ? 7 : 0;
+                const punktyWolontariat = wolontariat ? 3 : 0;
+
+                const sumaPunktow = punktySwiadectwo + punktyEgzaminy + punktyWyroznienie + punktyWolontariat + osiagniecie;
+
+                wynik.innerHTML = sumaPunktow + " punktów";
+                
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="title">KALKULATOR REKRUTACJI MERITUM</div>
+    <div class="calculator">
+        <form>
+            <label for="egzamin-polski">Egzamin - J. Polski (%)(Laureaci wpisują 100):</label>
+            <input type="number" id="egzamin-polski" name="egzamin-polski" step="1"><br>
+    
+            <label for="egzamin-matematyka">Egzamin - Matematyka (%)(Laureaci wpisują 100):</label>
+            <input type="number" id="egzamin-matematyka" name="egzamin-matematyka" step="1"><br>
+    
+            <label for="egzamin-jezyk-obcy">Egzamin - J. Obcy nowożytny (%)(Laureaci wpisują 100):</label>
+            <input type="number" id="egzamin-jezyk-obcy" name="egzamin-jezyk-obcy" step="1"><br>
+    
+            <label for="swiadectwo-polski">Świadectwo - J. Polski (ocena):</label>
+            <select id="swiadectwo-polski" name="swiadectwo-polski">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+            </select><br>
+    
+            <label for="swiadectwo-matematyka">Świadectwo - Matematyka (ocena):</label>
+            <select id="swiadectwo-matematyka" name="swiadectwo-matematyka">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+            </select><br>
+    
+            <label for="swiadectwo-jezyk-obcy">Świadectwo - J. obcy (najwyższa ocena z j. obowiązkowego):</label>
+            <select id="swiadectwo-jezyk-obcy" name="swiadectwo-jezyk-obcy">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+            </select><br>
+    
+            <label for="przedmiot-najwyzsza-ocena">Wybierz przedmiot z najwyższą oceną:</label>
+            <select id="przedmiot-najwyzsza-ocena" name="przedmiot-najwyzsza-ocena">
+                <option value="biologia-ocena">Biologia</option>
+                <option value="chemia-ocena">Chemia</option>
+                <option value="fizyka-ocena">Fizyka</option>
+                <option value="geografia-ocena">Geografia</option>
+                <option value="informatyka-ocena">Informatyka</option>
+                <option value="historia-ocena">Historia (tylko dla rekrutujących do liceum)</option>
+                <option value="wos-ocena">WoS (tylko dla rekrutujących do liceum)</option>
+            </select><br>
+    
+            <label for="ocena-przedmiot-dod">Ocena z wybranego wyżej przedmiotu:</label>
+            <select id="ocena-przedmiot-dod" name="ocena-przedmiot">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+            </select><br>
+
+            <label for="konkursy">Osiągnięcia w zawodach wiedzy:</label>
+            <select name="konkursy" id="konkursy">
+                <option value="10">Finalista konkursu przedmiotowego o zasięgu ponadwojewódzkim organizowanym przez kuratorów oświaty</option>
+                <option value="7">Laureat konkursu tematycznego lub interdyscyplinaryjnego o zasięgu ponadwojewódzkim organizowanym przez kuratorów oświaty</option>
+                <option value="5">Finalista konkursu tematycznego lub interdyscyplinaryjnego o zasięgu ponadwojewódzkim organizowanym przez kuratorów oświaty</option>
+                <option value="10">Finalista konkursu przedmiotowego o zasięgu międzynarodownym lub ogólnopolskim nieorganizowanego przez kuratorów oświaty</option>
+                <option value="7">Laureat konkursu interdyscyplinaryjnego o zasięgu międzynarodownym lub ogólnopolskim nieorganizowanego przez kuratorów oświaty</option>
+                <option value="5">Finalista konkursu interdyscyplinaryjnego o zasięgu międzynarodownym lub ogólnopolskim nieorganizowanego przez kuratorów oświaty</option>
+                <option value="10">Dwa lub więcej tytułów finalisty konkursu przedmiotowego o zasięgu wojewódzkim organizowanego przez kuratora oświaty</option>
+                <option value="7">Dwa lub więcej tytułów laureata konkursu tematycznego lub interdyscyplinaryjnego o zasięgu wojewódzkim organizowanego przez kuratora oświaty</option>
+                <option value="5">Dwa lub więcej tytułów finalisty konkursu tematycznego lub interdyscyplinaryjnego o zasięgu wojewódzkim organizowanego przez kuratora oświaty</option>
+                <option value="7">Tytuł finalisty konkursu przedmiotowego o zasięgu wojewódzkim organizowanego przez kuratora oświaty</option>
+                <option value="5">Tytuł laureata konkursu tematycznego lub interdyscyplinaryjnego o zasięgu wojewódzkim organizowanego przez kuratora oświaty</option>
+                <option value="3">Tytuł finalisty konkursu tematycznego albo interdyscyplinaryjnego o zasięgu wojewódzkim organizowanego przez kuratora oświaty</option>
+                <option value="10">Dwa lub więcej tytułów finalisty konkursu przedmiotowego o zasięgu ponadwojewódzkim lub wojewódzkim nieorganizowanego przez kuratora oświaty</option>
+                <option value="7">Dwa lub więcej tytułów laureata konkursu interdyscyplinaryjnego o zasięgu ponadwojewódzkim lub wojewódzkim nieorganizowanego przez kuratora oświaty</option>
+                <option value="7">Tytuł finalisty konkursu przedmiotowego o zasięgu ponadwojewódzkim lub wojewódzkim nieorganizowanego przez kuratora oświaty</option>
+                <option value="5">Tytuł laureata konkursu interdyscyplinaryjnego o zasięgu ponadwojewódzkim lub wojewódzkim nieorganizowanego przez kuratora oświaty</option>
+            </select><br>
+
+            <label for="wyroznienie">Wyróżnienie? (Świadectwo z paskiem)</label>
+            <input type="checkbox" id="wyroznienie" name="wyroznienie"><br>
+
+            <label for="wolontariat">Wolontariat?</label>
+            <input type="checkbox" id="wolontariat" name="wolontariat"><br>
+
+            <input type="submit" value="Oblicz">
+        </form>
+        <div class="wynik">Twój wynik:</div>
+        <div id="wynik"></div>
+    </div>
+</body>
+</html>
