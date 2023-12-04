@@ -1,0 +1,55 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f2f2f2;
+    color: #333;
+    text-align: center;
+    padding: 20px;
+}
+
+h1 {
+    color: #d35400;
+}
+
+div {
+    margin: 20px 0;
+}
+
+input[type=number] {
+    width: 50px;
+    padding: 5px;
+    margin: 5px;
+    border: 2px solid #d35400;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #d35400;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #e67e22;
+}
+
+p {
+    font-size: 1.2em;
+    margin: 10px 0;
+}
+
+#pasujaceLiczby {
+    color: #27ae60;
+    font-weight: bold;
+}
+
+#wylosowaneLiczby {
+    color: #2980b9;
+    font-weight: bold;
+}
+
+/* Autor: Kamil Mrowiec */
